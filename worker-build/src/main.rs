@@ -122,8 +122,9 @@ fn bundle(esbuild_path: &Path) -> Result<()> {
     let path = PathBuf::from(OUT_DIR).join(WORKER_SUBDIR).canonicalize()?;
     let esbuild_path = esbuild_path.canonicalize()?;
     let mut command = Command::new(esbuild_path);
+    
     command.args(&[
-        "--external:'__STATIC_CONTENT_MANIFEST'",
+        "--external:__STATIC_CONTENT_MANIFEST",
         "--external:./index.wasm",
         "--format=esm",
         "--bundle",
